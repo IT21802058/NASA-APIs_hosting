@@ -8,7 +8,7 @@ import { UserContextProvider } from '../context/userContext';
 import AstronomyPicOfDay from './pages/APOD';
 import MarsRoverPhoto from './pages/MarsRover';
 
-axios.defaults.baseURL = "https://nasa-apis-gkom-as2.onrender.com";
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 axios.defaults.withCredentials = true;
 
 function App() {
