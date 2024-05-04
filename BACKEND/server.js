@@ -12,11 +12,13 @@ const PORT = process.env.PORT;
 
 app.use(cors({
     origin: 'http://localhost:4000',
-    credentials: true
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
   }));
 app.use(bosyParser.json());
 app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
+
 
 const URL = process.env.MONGODB_URL;
 
