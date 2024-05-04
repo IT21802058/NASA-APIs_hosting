@@ -36,12 +36,12 @@ app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
 
 // Add CORS middleware specifically for the /user/profile endpoint
-app.use("/user/profile", (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", req.headers.origin);
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Credentials", "true");
-    next();
-});
+// app.use("/user/profile", (req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", req.headers.origin);
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     res.header("Access-Control-Allow-Credentials", "true");
+//     next();
+// });
 
 // Routes
 const userRoutes = require("./routes/userRoutes.js");
