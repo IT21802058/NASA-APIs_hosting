@@ -21,5 +21,4 @@ router.post("/token", generateToken);   //generate new access token
 router.delete("/logout", logOut);    //logout from sysytem and removing the refresh token from db
 
 
-
 module.exports = router;
