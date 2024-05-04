@@ -10,11 +10,7 @@ const axios = require("axios");
 
 const PORT = process.env.PORT;
 
-app.use(cors({
-    origin: process.env.DEV_URL,
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  }));
+app.use(cors());
 app.use(bosyParser.json());
 app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
