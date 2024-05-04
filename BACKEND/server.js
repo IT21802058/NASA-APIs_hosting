@@ -11,7 +11,7 @@ const axios = require("axios");
 const PORT = process.env.PORT;
 
 app.use(cors({
-    origin: process.env.DEV_URL.split(','),
+    origin: process.env.DEV_URL,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   }));
