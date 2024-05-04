@@ -11,7 +11,7 @@ const axios = require("axios");
 const PORT = process.env.PORT;
 
 app.use(cors({
-    origin: [process.env.DEV_URL],
+    origin: [process.env.DEV_URL , "https://nasa-apis-gkom-as2.onrender.com"],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   }));
