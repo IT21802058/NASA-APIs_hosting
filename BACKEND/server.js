@@ -16,7 +16,7 @@ const DEV_URL = process.env.DEV_URL;
 const MONGODB_URL = process.env.MONGODB_URL;
 
 app.use(cors({
-    origin: '*',
+    origin: DEV_URL,
     credentials: true
 }));
 
