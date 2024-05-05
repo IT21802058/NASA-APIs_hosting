@@ -16,11 +16,7 @@ const DEV_URL = process.env.DEV_URL;
 const MONGODB_URL = process.env.MONGODB_URL;
 
 app.use(cors({
-    headers: {
-        "Access-Control-Allow-Origin": "https://nasa-ap-is-hosting.vercel.app/"
-      },
-    origin: "https://nasa-ap-is-hosting.vercel.app/",
-    credentials: true
+    origin: DEV_URL
 }));
 
 app.use(bodyParser.json());
