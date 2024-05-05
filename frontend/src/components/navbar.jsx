@@ -6,14 +6,14 @@ import { toast } from 'react-hot-toast';
 
 const Navbar = () => {
     const navigate = useNavigate();
-    const { user } = useContext(UserContext);
+    const { user, updateUser } = useContext(UserContext);
     const [loggedIn, setLoggedIn] = useState(false);
-    const data = {
-        id:  user.id
-    }
+
     const handleLogout = async () => {
         try {
+            localStorage.removeItem('user'); // Remove user data from localStorage
             document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            updateUser(null); // Reset user context
             toast.success("Logout successful!");
             navigate("/");
         } catch (error) {
@@ -22,10 +22,12 @@ const Navbar = () => {
     };
 
     useEffect(() => {
-        if (user) {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            updateUser(JSON.parse(storedUser)); // Set user context with stored user data
             setLoggedIn(true);
         }
-    }, [user]);
+    }, []);
 
     if (!loggedIn) {
         return null;
@@ -37,7 +39,7 @@ const Navbar = () => {
                 <div className="flex justify-between items-center">
                     <div className="flex w-10 font-bold text-2xl">
                         <div>
-                            <h2>Hi {user.name}!</h2>
+                            <h2>Hi {user ? user.name : 'Guest'}!</h2>
                         </div>
                     </div>
                     <div className="text-white">

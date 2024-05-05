@@ -26,23 +26,20 @@ const AuthPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log(data);
-                 if (isLogin) {
-                // Handle login logic
+            if (isLogin) {
                 const response = await axios.post('/user/userlogin', data);
                 if (response.data) {
-                    toast.success('Login successful!');
+                    localStorage.setItem('user', JSON.stringify(response.data)); // Store user data in localStorage
                     updateUser(response.data);
+                    toast.success('Login successful!');
                 }
                 navigate('/astromain');
             } else {
-                // Handle registration logic
                 if (data.password === data.confirmPassword) {
                     const response = await axios.post('/user/add', data);
                     if (response.data) {
                         toast.success('Registration successful!');
-                        // Navigate to login page after successful registration
-                        setIsLogin(true); // Switch to login form after registration
+                        setIsLogin(true);
                     }
                 } else {
                     toast.error('Password mismatch!');
@@ -59,7 +56,7 @@ const AuthPage = () => {
         return () => {
           document.title = "NASA";
         };
-      }, []);
+    }, []);
 
     return (
         <div className='text-white h-screen relative'>
