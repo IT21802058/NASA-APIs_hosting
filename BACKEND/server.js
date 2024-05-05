@@ -17,7 +17,7 @@ const MONGODB_URL = process.env.MONGODB_URL;
 
 app.use(cors({
     header: {
-        "Access-Control-Allow-origin" : "https://nasa-ap-is-hosting.vercel.app/",
+        "Access-Control-Allow-origin" : "https://vite-gkom-nasa-apis.web.app/",
         credentials: true
     },
     origin: DEV_URL,
