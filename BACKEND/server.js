@@ -16,12 +16,8 @@ const DEV_URL = process.env.DEV_URL;
 const MONGODB_URL = process.env.MONGODB_URL;
 
 app.use(cors({
-    header: {
-        "Access-Control-Allow-origin" : "https://vite-gkom-nasa-apis.web.app/",
-        credentials: true
-    },
-    origin: DEV_URL,
-    credentials: true
+    origin: ['https://vite-gkom-nasa-apis.web.app', 'https://nasa-apis-gkom-as2.onrender.com'], // Allow requests from these origins
+    credentials: true // Allow credentials (cookies, authorization headers, etc.)
 }));
 
 app.use(bodyParser.json());
