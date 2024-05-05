@@ -64,7 +64,7 @@ const AuthPage = () => {
                 <video autoPlay muted loop className='absolute inset-0 w-full h-full object-cover'>
                     <source src={bgVideo} type='video/mp4' />
                 </video>
-                <div className='bg-slate-800 border border-slate-400 rounded-md p-12 shadow-lg backdrop-filter backdrop-blur-sm bg-opacity-70 relative'>
+                <div className='bg-slate-800 border border-slate-400 rounded-md p-9 shadow-lg backdrop-filter backdrop-blur-sm bg-opacity-70 relative'>
                     <h1 className='text-4xl text-white font-bold text-center mb-7 py-4'>
                         {isLogin ? 'User Login' : 'Sign Up'}
                     </h1>
