@@ -169,18 +169,18 @@ const logOut = asyncHandler(async (req, res) => {
         });
 });
 
-// const getProfile = asyncHandler(async(req,res)=>{
-//     const {token} = req.cookies;
-//     if(token){
-//         jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, {}, (err, user)=>{
-//             if(err) throw err;
-//             res.json(user)
-//         })
-//     }else{
-//         res.json(null);
-//     }
+const getProfile = asyncHandler(async(req,res)=>{
+    const {token} = req.cookies;
+    if(token){
+        jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, {}, (err, user)=>{
+            if(err) throw err;
+            res.json(user)
+        })
+    }else{
+        res.json(null);
+    }
     
-// })
+})
 
 
 //expotation
@@ -192,4 +192,5 @@ module.exports = {
     userLogin, 
     generateToken, 
     logOut,
+    getProfile 
 };
