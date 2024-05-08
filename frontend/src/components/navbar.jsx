@@ -37,7 +37,7 @@ const Navbar = () => {
         <div className='bg-slate-800 rounded-md p-8 shadow-lg backdrop-filter backdrop-blur-sm bg-opacity-70 ' style={{ position: 'fixed', top: '0px', left: '0px', right: '0px', zIndex: '9999' }}>
             <div className="container">
                 <div className="flex justify-between items-center">
-                    <div className="flex w-10 font-bold text-2xl">
+                    <div className="flex w-10 font-bold text-2xl hidden sm:block">
                         <div>
                             <h2>Hi {user ? user.name : 'Guest'}!</h2>
                         </div>
@@ -45,18 +45,18 @@ const Navbar = () => {
                     <div className="text-white">
                         <ul className="flex items-center gap-6 text-xl py-4">
                             <li>
-                                <a href="/astromain" className="hover:text-green-500 ">|   Home   |</a>
+                                <a href="/astromain" className="hover:text-green-500 ">   Home   </a>
                             </li>
                             <li>
-                                <a href="/apod" className="hover:text-green-500">|   Astronomy Picture of the Day   |</a>
+                                <a href="/apod" className="hover:text-green-500">   APOD   </a>
                             </li>
                             <li>
-                                <a href="/marsroverphoto" className="hover:text-green-500">|   Mars Rover Photos   |</a>
+                                <a href="/marsroverphoto" className="hover:text-green-500">   Mars Rover   </a>
                             </li>
                         </ul>
                     </div>
                     <div>
-                        <button onClick={handleLogout} className="hover:text-red-500 hover:border-red-500 text-white border-2 border-white px-3 py-1 rounded-md">Logout</button>
+                        <button onClick={handleLogout} className="hover:text-red-950 hover:border-red-950 text-red-500 border-2 border-red-500 px-3 py-1 rounded-md">Logout</button>
                     </div>
                 </div>
             </div>

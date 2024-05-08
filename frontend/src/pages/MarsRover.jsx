@@ -57,7 +57,7 @@ const MarsRoverPhoto = () => {
             <div className="absolute inset-0 w-full h-full bg-cover" style={{ backgroundImage: `url(${bgImage})`, opacity: 0.5 }}></div>
             <Navbar />
             <div className='text-white h-[100vh] flex flex-col justify-center items-center bg-cover relative'>
-            <div className="sm:grid-cols-2 gap-4 bg-black/20 h-full text-white relative z-50 justify-center item-center p-5" style={{ paddingTop: '10%' }}>
+            <div className="sm:grid-cols-2 gap-4 bg-black/20 h-full text-white relative z-50 justify-center item-center p-5 hidden sm:block" style={{ paddingTop: '10%' }}>
                 <div className="text-l p-3 absolute left-0 bg-black/40 right-0 flex justify-center mt-3 space-x-4 flex-wrap">
                     <button onClick={() => handleCameraChange('FHAZ')} className="btn hover:text-orange-500">FHAZ</button>
                     <button onClick={() => handleCameraChange('RHAZ')} className="btn hover:text-orange-500">RHAZ</button>
@@ -69,6 +69,24 @@ const MarsRoverPhoto = () => {
                         <div>
                             <div key={photo.id} className="mb-4">
                             <img src={photo.img_src} alt={`Sol ${photo.sol} - ${selectedCamera}`} className="w-80 h-80 object-cover rounded-md" />
+                        </div>
+                        </div>
+                        
+                    ))}
+                </div>
+            </div>
+            <div className="sm:grid-cols-2 gap-4 bg-black/20 h-full text-white relative z-50 justify-center item-center p-5 hidden max-sm:block" style={{ paddingTop: '35%' }}>
+                <div className="text-l p-3 absolute left-0 bg-black/40 right-0 flex justify-center mt-3 space-x-4 flex-wrap">
+                    <button onClick={() => handleCameraChange('FHAZ')} className="btn hover:text-orange-500">FHAZ</button>
+                    <button onClick={() => handleCameraChange('RHAZ')} className="btn hover:text-orange-500">RHAZ</button>
+                    <button onClick={() => handleCameraChange('CHEMCAM')} className="btn hover:text-orange-500">CHEMCAM</button>
+                </div><br/>
+                <div className='text-orange-500 flex justify-center items-center w-full text-l underline capitalize' style={{ paddingTop: '6%' }}>{fullname}</div>
+                <div className="mt-8 grid grid-cols-2  gap-4 bg-black/40">
+                    {photoData && photoData.map(photo => (
+                        <div>
+                            <div key={photo.id} className="mb-4">
+                            <img src={photo.img_src} alt={`Sol ${photo.sol} - ${selectedCamera}`} className="w-80 h-56 object-cover rounded-md" />
                         </div>
                         </div>
                         

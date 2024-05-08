@@ -7,10 +7,12 @@ import Footer from '../components/footer';
 import bgVideo from '../assets/Earth-from-space.mp4';
 import bgImage from '../assets/background.jpg';
 const apiKey = import.meta.env.VITE_API_KEY
+import { FiMoreVertical } from "react-icons/fi";
 
 const AstronomyPicOfDay = () => {
     const [apodData, setApodData] = useState(null);
     const [selectedDate, setSelectedDate] = useState(new Date());
+    const [disData, setDisData] = useState(false);
 
     useEffect(() => {
         const fetchApodData = async () => {
@@ -36,6 +38,9 @@ const AstronomyPicOfDay = () => {
         setSelectedDate(date);
     };
 
+    const handleDisplayData = () =>{
+        setDisData(!disData);
+    }
     useEffect(() => {
         document.title = "APOD | NASA";
         return () => {
@@ -50,15 +55,15 @@ const AstronomyPicOfDay = () => {
             </video>
             <div className="absolute inset-0 w-full h-full bg-cover" style={{ backgroundImage: `url(${bgImage})`, opacity: 0.5 }}></div>
             <Navbar />
-            <div className="sm:grid-cols-2 gap-4 bg-black/10 h-full text-white relative z-50 justify-center item-center p-5" style={{ paddingTop: '14%' }}>
+            <div className="sm:grid-cols-2 gap-4 bg-black/10 h-full text-white relative z-50 justify-center item-center p-5 hidden sm:block" style={{ paddingTop: '16%' }}>
                 <div className="bg-black/10 space-y-4 lg:pr-36 flex justify-between items-center">
-                    <div style={{ paddingRight: '20px' }}>
+                    <div className="hidden sm:block" style={{ paddingRight: '20px' }}>
                         <h1 className="text-3xl font-bold mb-4">{apodData?.title}</h1>
                         <img src={apodData?.url} alt={apodData?.title} className='rounded-lg mb-4 h-80 w-80' />
                     </div>
                     <div className="text-lg border-l-2 border-white pl-4 w-full h-full item-center bg-black/50">
                         <h3 className="text-xl font-bold mb-4">
-                        Select the date :-
+                            Select the date :-
                             <DatePicker 
                                 selected={selectedDate} 
                                 onChange={handleDateChange} 
@@ -66,7 +71,32 @@ const AstronomyPicOfDay = () => {
                                 className="text-black opacity-50"
                             />
                         </h3>
+                        <h1 className="text-3xl font-bold mb-4 sm:hidden">{apodData?.title}</h1>
+                        <img src={apodData?.url} alt={apodData?.title} className='rounded-lg mb-4 h-80 w-80 sm:hidden' />
                         <p>{apodData?.explanation}</p>
+                    </div>
+                </div>
+            </div>
+            <div className="sm:grid-cols-2 gap-4 bg-black/10 h-full text-white relative z-50 justify-center item-center p-5 hidden max-sm:block" style={{ paddingTop: '35%' }}>
+                <div className="bg-black/10 space-y-4 lg:pr-36 flex justify-between items-center">
+                    <div className="hidden sm:block" style={{ paddingRight: '20px' }}>
+                        <h1 className="text-3xl font-bold mb-4">{apodData?.title}</h1>
+                        <img src={apodData?.url} alt={apodData?.title} className='rounded-lg mb-4 h-80 w-80' />
+                    </div>
+                    <div className="text-lg border-l-2 border-white pl-4 w-full h-full item-center bg-black/50">
+                        <h3 className="text-xl font-bold mb-4">
+                            Select the date :-
+                            <DatePicker 
+                                selected={selectedDate} 
+                                onChange={handleDateChange} 
+                                maxDate={new Date()}
+                                className="text-black opacity-50"
+                            />
+                            <button className='px-4' onClick={handleDisplayData}><FiMoreVertical/></button>
+                        </h3>
+                        <h1 className="text-3xl font-bold mb-4 sm:hidden">{apodData?.title}</h1>
+                        <img src={apodData?.url} alt={apodData?.title} className='rounded-lg mb-4 h-80 w-80 sm:hidden' />
+                        {disData && <p>{apodData?.explanation}</p>}
                     </div>
                 </div>
             </div>

@@ -10,7 +10,6 @@ const addUser = asyncHandler(async (req, res) => {
     const { name, email, password, userType } = req.body;
 
     const hashedPassword = await bcrypt.hash(password, 10);
-
     const newUser = new User({
         name,
         email,

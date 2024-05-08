@@ -21,7 +21,7 @@ const Astro = () => {
             </video>
             <div className='flex'>
             <div><Navbar /></div>
-            <div style={{ paddingTop: '15%' }}>
+            <div style={{ paddingTop: '20%' }}>
                 <AstroMainmid />
             </div>
             </div>
